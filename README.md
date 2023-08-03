@@ -1,110 +1,110 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/a98475bf9c466d5ca815/maintainability)](https://codeclimate.com/github/fryntiz/debian-developer-conf/maintainability)
 
-# Script para Preparar Entorno de Programación en Debian
+# Skript zum Vorbereiten einer Debian-Programmierumgebung
 
-Script para tener un entorno funcional en poco tiempo y además tener
-sincronizada la configuración de distintos dispositivos con los que trabajo.
+Skript, um in kurzer Zeit eine funktionsfähige Umgebung zu haben und auch um die Konfiguration
+die Konfiguration der verschiedenen Geräte, mit denen ich arbeite, zu synchronisieren.
 
-Este script prepara completamente el entorno de programación, aplicaciones,
-servidores, comandos personalizados, interfaz gráfica, plantillas y repositorios en Debian Stable.
+Dieses Skript bereitet die Programmierumgebung, Anwendungen, Server, benutzerdefinierte Befehle, GUI, Vorlagen und Repositories vollständig vor,
+Server, benutzerdefinierte Befehle, GUI, Vorlagen und Repositories in Debian Stable.
 
 ![Imagen de previsualización](docs/Preview.jpg)
 
-Todas las configuraciones y elecciones se han establecido a mi gusto, puedes
-personalizar cualquier parte que decidas para este script bajo la misma
-licencia GPLv3.
+Alle Einstellungen und Auswahlmöglichkeiten wurden nach meinem Geschmack festgelegt, Sie können jeden
+Sie können jeden Teil, den Sie für dieses Skript wählen, unter der gleichen GPLv3-Lizenz anpassen.
+GPLv3-Lizenz.
 
-Si encuentras algún fallo o detectas que algo podría funcionar mejor, añade un
-**Issue** al que estaré encantado de atender y valorar.
+Wenn Sie einen Fehler finden oder feststellen, dass etwas besser funktionieren könnte, fügen Sie eine
+Wenn Sie einen Fehler finden oder feststellen, dass etwas besser funktionieren könnte, fügen Sie ein **Issue** hinzu, das ich gerne bearbeiten und bewerten werde.
 
-También puedes colaborar con los PR que creas oportuno siempre que vaya en la
-línea del script y no sea necesario darle la vuelta a todo el proyecto.
+Sie können auch mit dem PR zusammenarbeiten, den Sie für angemessen halten, solange es in der
+Zeile des Skripts steht und es nicht notwendig ist, das ganze Projekt auf den Kopf zu stellen.
 
 En todo caso recomiendo usar la rama **Master** y si quieres colaborar crea un
 **fork** y haz **PR** sobre la rama **dev** para valorar si formará parte de
 la siguiente versión.
 
-## Advertencias y Explicación para decisiones
+## Warnungen und Erklärungen für Entscheidungen
 
-Si no usas **repositorios oficiales**, mezclas repositorios o tienes otro
-sistema distinto a Debian Stable estarás **experimentando** así que úsalo bajo
-tu riesgo.
+Wenn Sie keine **offiziellen Repositories** verwenden, Repositories mischen oder eine andere
+andere als Debian Stable verwenden, dann **experimentieren** Sie auf eigene Gefahr.
+Ihr eigenes Risiko.
 
-Este script está automatizado y puede cambiar configuración sin que te pregunte.
+Dieses Skript ist automatisiert und kann Einstellungen ändern, ohne dass Sie dazu aufgefordert werden.
 
-Una buena idea sería que lo ejecutaras tras hacer una copia de seguridad o en
-una máquina virtual hasta ver que el script completo se adapta a tus
-necesidades o modificar la parte que prefieras diferente realizando un fork de
-este repositorio.
+Eine gute Idee wäre es, es nach der Erstellung eines Backups oder in einer virtuellen Maschine auszuführen, bis Sie sehen, dass das Skript
+einer virtuellen Maschine auszuführen, bis Sie sehen, dass das gesamte Skript Ihren Bedürfnissen entspricht oder den Teil zu ändern, den Sie
+oder ändern Sie den Teil, den Sie anders bevorzugen, indem Sie einen Fork dieses Repositorys erstellen.
+dieses Repository.
 
-Trabajo en la modularidad para que puedas ejecutar solo una parte que te
-interese y no dependas del script al completo.
+Ich arbeite nach dem Prinzip der Modularität, so dass Sie nur den Teil des Skripts ausführen können, an dem Sie interessiert sind
+und nicht auf das ganze Skript angewiesen sind.
 
-Para evitar que sea interactivo y estar constantemente preguntando se establece
-"-y" como parámetro por defecto en **apt** lo cual puede instalar software en
-forma de dependencia y/o romper en casos muy extremos el sistema, aunque repito
-que con repositorios oficiales no debe ocurrir nada extraño y si es así puedes
-reportarlo para su corrección.
+Um zu vermeiden, dass es interaktiv ist und ständig Fragen stellt, setzen wir
+"-y" als Standardparameter in **apt**, der Software in Form einer Abhängigkeit installieren kann
+Abhängigkeit installieren und/oder das System in sehr extremen Fällen zerstören kann, obwohl ich wiederhole, dass mit offiziellen
+dass bei offiziellen Repositories nichts Seltsames passieren sollte und wenn doch, können Sie es zur Korrektur melden.
+melden Sie es zur Korrektur.
 
-## Objetivos
+## Ziele
 
-Crear un entorno de trabajo personalizado para desarrollar aplicaciones web
-según las preferencias del autor (https://github.com/raupulus).
+Schaffung einer maßgeschneiderten Arbeitsumgebung für die Entwicklung von Webanwendungen
+nach den Präferenzen des Autors (https://github.com/raupulus).
 
-Se plantea lo más modular que me ha sido posible para que en algunos casos no
-sea necesario ejecutar el script completo y solo la parte que realmente
-necesitas (si fuese el caso).
+Es ist so modular wie möglich aufgebaut, so dass es in manchen Fällen nicht notwendig ist, das
+das komplette Skript auszuführen und nur den Teil, den man wirklich braucht (falls das der Fall ist).
+Sie wirklich benötigen (falls dies der Fall ist).
 
-Previsualización de menú para aplicaciones:
+Vorschaumenü für Anwendungen:
 
 ![Imagen de previsualización 1](docs/Apps.jpg)
 
-Estos son los principales objetivos:
+Dies sind die wichtigsten Ziele:
 
-- Configurar terminales, bash y zsh
-- Instalar tipografías
-- Instalar editores Brackets, Atom, ninja IDE y Vim con sus personalizaciones
-- Instalar IDEs si el usuario lo elige
-- Configurar sistema y variables globales
-- Ampliar repositorios desde fuentes estables y fiables
-- Instalar configuraciones y personalizaciones para el sistema y programas en
-el HOME
-- Instalar atajos y personalizaciones para trabajar con git, GitHub y GitLab
-- Instalar servidores Apache2, PostgreSQL, MariaDB
-- Instalar lenguajes de programación, dependencias y librerías para → php,
+- Terminals, bash und zsh konfigurieren
+- Installation von Schriftarten
+- Installation von Brackets, Atom, ninja IDE und Vim-Editoren mit Anpassungen
+- IDEs installieren, wenn der Benutzer es wünscht
+- Konfigurieren von System- und globalen Variablen
+- Erweitern von Repositories aus stabilen und zuverlässigen Quellen
+- Installieren Sie Konfigurationen und Anpassungen für das System und Programme im
+HOME
+- Abkürzungen und Anpassungen für die Arbeit mit Git, GitHub und GitLab installieren
+- Installieren Sie Apache2, PostgreSQL, MariaDB Server
+- Installieren Sie Programmiersprachen, Abhängigkeiten und Bibliotheken für → php,
 python, nodejs, ruby, bash, zsh
-- Instalar Navegadores WEB para desarrolladores como Firefox Developer y
+- Installieren von WEB-Browsern für Entwickler wie Firefox Developer und
 Firefox Nightly
-- Instalar herramientas para ayudar a debug en lenguajes web
-- Configurar interfaces gráficas
+- Installieren Sie Tools zur Fehlersuche in Websprachen
+- Konfigurieren Sie grafische Schnittstellen
 
-Previsualización de menú Personalización:
+Vorschau-Menü Anpassen:
 
 ![Imagen de previsualización 1](docs/Personalización.png)
 
-## Distribución compatible
+## Kompatible Distribution
 
-Está destinado única y exclusivamente para **Debian 9** (estable) y se irá
-actualizando con esta rama estable.
+Es ist nur für **Debian 9** (stable) gedacht und wird mit diesem stabilen Zweig aktualisiert.
+mit diesem stabilen Zweig aktualisiert.
 
-En otras ramas y distribuciones puede romper el sistema, para portarlo no hay
-demasiadas complicaciones y se deberá renombrar la instalación/nombre de
-paquetes si procede y establecer repositorios de acorde a la distribución. El
-resto de los pasos deberían ser idénticos.
+Auf anderen Zweigen und Distributionen kann es das System kaputt machen, um es zu portieren gibt es nicht allzu viele
+Um es zu portieren, gibt es nicht allzu viele Komplikationen und man muss die Installation/Namen umbenennen
+umbenennen und die Repositories entsprechend der Distribution einrichten. Die
+Rest der Schritte sollte identisch sein.
 
-Todo el script se basa en funciones.sh por lo que editando este archivo y
-adaptándolo a tu distribución podrás conseguir un cierto nivel de
-compatibilidad.
+Das gesamte Skript basiert auf .sh-Funktionen. Wenn Sie also diese Datei bearbeiten und an Ihre Distribution anpassen, wird
+Wenn Sie diese Datei bearbeiten und an Ihre Distribution anpassen, können Sie ein gewisses Maß an Kompatibilität erreichen.
+Kompatibilität.
 
-## Modularidad
+## Modularität
 
-Se ha intentado hacer modular de forma que apenas sea necesario tocar los
-scripts para añadir/quitar funciones.
+Es wurde versucht, es modular zu gestalten, so dass es kaum notwendig ist, die
+Skripte anzufassen, um Funktionen hinzuzufügen oder zu entfernen.
 
-La idea es que el script pregunte lo mínimo posible y que esto sean decisiones
-relevantes.
+Die Idee ist, dass das Skript so wenige Fragen wie möglich stellt und dass es sich um relevante Entscheidungen handelt.
+Entscheidungen.
 
-## Ejecutar script
+## Skript ausführen
 
 Es importante realizar todos los pasos desde bash. Si usas **zsh** cambia a
 **bash** antes de ejecutarlo:
